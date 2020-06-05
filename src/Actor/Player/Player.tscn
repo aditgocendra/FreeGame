@@ -1,0 +1,164 @@
+[gd_scene load_steps=64 format=2]
+
+[ext_resource path="res://assets/robotplayer/png/Idle (4).png" type="Texture" id=1]
+[ext_resource path="res://assets/robotplayer/png/Idle (1).png" type="Texture" id=2]
+[ext_resource path="res://assets/robotplayer/png/Idle (10).png" type="Texture" id=3]
+[ext_resource path="res://assets/robotplayer/png/Idle (8).png" type="Texture" id=4]
+[ext_resource path="res://assets/robotplayer/png/Idle (9).png" type="Texture" id=5]
+[ext_resource path="res://assets/robotplayer/png/Idle (5).png" type="Texture" id=6]
+[ext_resource path="res://assets/robotplayer/png/Idle (6).png" type="Texture" id=7]
+[ext_resource path="res://assets/robotplayer/png/Idle (7).png" type="Texture" id=8]
+[ext_resource path="res://assets/robotplayer/png/Idle (3).png" type="Texture" id=9]
+[ext_resource path="res://assets/robotplayer/png/Idle (2).png" type="Texture" id=10]
+[ext_resource path="res://src/Actor/Player/Player.gd" type="Script" id=11]
+[ext_resource path="res://assets/robotplayer/png/Run (8).png" type="Texture" id=12]
+[ext_resource path="res://assets/robotplayer/png/Run (6).png" type="Texture" id=13]
+[ext_resource path="res://assets/robotplayer/png/Run (1).png" type="Texture" id=14]
+[ext_resource path="res://assets/robotplayer/png/Run (7).png" type="Texture" id=15]
+[ext_resource path="res://assets/robotplayer/png/Run (5).png" type="Texture" id=16]
+[ext_resource path="res://assets/robotplayer/png/Run (4).png" type="Texture" id=17]
+[ext_resource path="res://assets/robotplayer/png/Run (3).png" type="Texture" id=18]
+[ext_resource path="res://assets/robotplayer/png/Run (2).png" type="Texture" id=19]
+[ext_resource path="res://assets/robotplayer/png/Jump (4).png" type="Texture" id=20]
+[ext_resource path="res://assets/robotplayer/png/Jump (6).png" type="Texture" id=21]
+[ext_resource path="res://assets/robotplayer/png/Jump (7).png" type="Texture" id=22]
+[ext_resource path="res://assets/robotplayer/png/Jump (2).png" type="Texture" id=23]
+[ext_resource path="res://assets/robotplayer/png/Jump (10).png" type="Texture" id=24]
+[ext_resource path="res://assets/robotplayer/png/Jump (5).png" type="Texture" id=25]
+[ext_resource path="res://assets/robotplayer/png/Jump (1).png" type="Texture" id=26]
+[ext_resource path="res://assets/robotplayer/png/Jump (9).png" type="Texture" id=27]
+[ext_resource path="res://assets/robotplayer/png/Jump (8).png" type="Texture" id=28]
+[ext_resource path="res://assets/robotplayer/png/Jump (3).png" type="Texture" id=29]
+[ext_resource path="res://assets/robotplayer/png/Shoot (2).png" type="Texture" id=30]
+[ext_resource path="res://assets/robotplayer/png/Shoot (1).png" type="Texture" id=31]
+[ext_resource path="res://assets/robotplayer/png/Shoot (3).png" type="Texture" id=32]
+[ext_resource path="res://assets/robotplayer/png/Shoot (4).png" type="Texture" id=33]
+[ext_resource path="res://assets/robotplayer/png/JumpShoot (1).png" type="Texture" id=34]
+[ext_resource path="res://assets/robotplayer/png/JumpShoot (5).png" type="Texture" id=35]
+[ext_resource path="res://assets/robotplayer/png/JumpShoot (4).png" type="Texture" id=36]
+[ext_resource path="res://assets/robotplayer/png/JumpShoot (3).png" type="Texture" id=37]
+[ext_resource path="res://assets/robotplayer/png/JumpShoot (2).png" type="Texture" id=38]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (5).png" type="Texture" id=39]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (6).png" type="Texture" id=40]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (1).png" type="Texture" id=41]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (9).png" type="Texture" id=42]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (7).png" type="Texture" id=43]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (8).png" type="Texture" id=44]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (3).png" type="Texture" id=45]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (2).png" type="Texture" id=46]
+[ext_resource path="res://assets/robotplayer/png/RunShoot (4).png" type="Texture" id=47]
+[ext_resource path="res://src/Actor/Player/Gun.gd" type="Script" id=48]
+[ext_resource path="res://assets/sound/shoot.wav" type="AudioStream" id=49]
+[ext_resource path="res://assets/robotplayer/png/Dead (1).png" type="Texture" id=50]
+[ext_resource path="res://assets/robotplayer/png/Dead (4).png" type="Texture" id=51]
+[ext_resource path="res://assets/robotplayer/png/Dead (8).png" type="Texture" id=52]
+[ext_resource path="res://assets/robotplayer/png/Dead (6).png" type="Texture" id=53]
+[ext_resource path="res://assets/robotplayer/png/Dead (7).png" type="Texture" id=54]
+[ext_resource path="res://assets/robotplayer/png/Dead (2).png" type="Texture" id=55]
+[ext_resource path="res://assets/robotplayer/png/Dead (9).png" type="Texture" id=56]
+[ext_resource path="res://assets/robotplayer/png/Dead (10).png" type="Texture" id=57]
+[ext_resource path="res://assets/robotplayer/png/Dead (5).png" type="Texture" id=58]
+[ext_resource path="res://assets/robotplayer/png/Dead (3).png" type="Texture" id=59]
+[ext_resource path="res://assets/sound/jump.wav" type="AudioStream" id=60]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 50 ), ExtResource( 55 ), ExtResource( 59 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 56 ), ExtResource( 57 ) ],
+"loop": true,
+"name": "Dead",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 30 ), ExtResource( 32 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "Shoot",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "RunShoot",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 23 ), ExtResource( 29 ), ExtResource( 20 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "JumpShoot",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 135.107, 246.873 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Spawn"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedPlayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 1.88937, -46.9652 )
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 11 )
+
+[node name="PlatformDetector" type="RayCast2D" parent="."]
+position = Vector2( -10.1954, 240.611 )
+enabled = true
+collision_mask = 4
+
+[node name="AnimatedPlayer" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="Gun" type="Position2D" parent="AnimatedPlayer"]
+position = Vector2( 163.832, 0 )
+script = ExtResource( 48 )
+
+[node name="Cooldown" type="Timer" parent="AnimatedPlayer/Gun"]
+process_mode = 0
+one_shot = true
+
+[node name="AudioShoot" type="AudioStreamPlayer" parent="AnimatedPlayer/Gun"]
+stream = ExtResource( 49 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -20.8548, -7.831 )
+shape = SubResource( 2 )
+
+[node name="TimerAnimation" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Spawn = SubResource( 3 )
+
+[node name="AudioJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 60 )
