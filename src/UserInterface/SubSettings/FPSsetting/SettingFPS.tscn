@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/font/font_28_UI_black.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/UserInterface/SubSettings/FPSsetting/SettingFPS.gd" type="Script" id=3]
+
+[node name="SettingFPS" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -242.0
+margin_bottom = -80.0
+rect_min_size = Vector2( 600, 400 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelSett" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -124.5
+margin_top = 13.7818
+margin_right = 124.5
+margin_bottom = 42.7818
+custom_fonts/font = ExtResource( 1 )
+text = "Frame Per Second"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowOrHide" type="HBoxContainer" parent="."]
+margin_left = 20.1183
+margin_top = 47.2005
+margin_right = 269.118
+margin_bottom = 166.2
+rect_scale = Vector2( 1.00307, 1.00307 )
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ShowOrHide"]
+margin_right = 248.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+
+[node name="LabelFPS" type="Label" parent="ShowOrHide/HBoxContainer2"]
+margin_top = 47.0
+margin_right = 123.0
+margin_bottom = 71.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "Fps Label "
+align = 1
+valign = 1
+
+[node name="CheckBox" type="CheckBox" parent="ShowOrHide/HBoxContainer2"]
+margin_left = 127.0
+margin_top = 47.0
+margin_right = 151.0
+margin_bottom = 71.0
+size_flags_vertical = 6
+
+[node name="LabelOnOff" type="Label" parent="ShowOrHide/HBoxContainer2"]
+margin_left = 155.0
+margin_top = 47.0
+margin_right = 248.0
+margin_bottom = 71.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+text = "On"
+[connection signal="pressed" from="ShowOrHide/HBoxContainer2/CheckBox" to="." method="_on_CheckBox_pressed"]

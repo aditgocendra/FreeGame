@@ -1,0 +1,186 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/font/font_32_UI.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/UserInterface/SubSettings/FPSsetting/SettingFPS.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UserInterface/Settings/Settings.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.12549, 0.141176, 0.192157, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color( 0.356863, 0.372549, 0.419608, 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundSettings" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.14902, 0.172549, 0.231373, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelSettings" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -225.0
+margin_bottom = 225.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelSetting" type="Label" parent="PanelSettings"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -43.0
+margin_top = 10.5886
+margin_right = 43.0
+margin_bottom = 43.5886
+custom_fonts/font = ExtResource( 1 )
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelSettings"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = 66.0
+margin_right = 64.0
+margin_bottom = 306.0
+rect_min_size = Vector2( 0, 240 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxFPS" type="HBoxContainer" parent="PanelSettings/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelFPS" type="Label" parent="PanelSettings/VBoxContainer/HBoxFPS"]
+margin_right = 128.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "FPS"
+align = 1
+valign = 1
+
+[node name="TouchFPS" type="TouchScreenButton" parent="PanelSettings/VBoxContainer/HBoxFPS/LabelFPS"]
+position = Vector2( 18.8622, 25.7211 )
+scale = Vector2( 4.43314, 1.25691 )
+shape = SubResource( 2 )
+
+[node name="HBoxSound" type="HBoxContainer" parent="PanelSettings/VBoxContainer"]
+margin_top = 81.0
+margin_right = 128.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelSound" type="Label" parent="PanelSettings/VBoxContainer/HBoxSound"]
+margin_right = 128.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Sound"
+align = 1
+valign = 1
+
+[node name="TouchSound" type="TouchScreenButton" parent="PanelSettings/VBoxContainer/HBoxSound/LabelSound"]
+position = Vector2( 18.8622, 27.886 )
+scale = Vector2( 4.43314, 1.25691 )
+shape = SubResource( 2 )
+
+[node name="HBoxControl" type="HBoxContainer" parent="PanelSettings/VBoxContainer"]
+margin_top = 162.0
+margin_right = 128.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelControl" type="Label" parent="PanelSettings/VBoxContainer/HBoxControl"]
+margin_right = 128.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Control"
+align = 1
+valign = 1
+
+[node name="TouchControl" type="TouchScreenButton" parent="PanelSettings/VBoxContainer/HBoxControl/LabelControl"]
+position = Vector2( 18.8622, 27.4787 )
+scale = Vector2( 4.43314, 1.25691 )
+shape = SubResource( 2 )
+
+[node name="SettingContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -389.0
+margin_top = -215.0
+margin_right = 211.0
+margin_bottom = 185.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingFPS" parent="SettingContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 600.0
+margin_bottom = 400.0
+
+[node name="BackLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 21.6484
+margin_top = -44.9501
+margin_right = 77.6484
+margin_bottom = -20.9501
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchBack" type="TouchScreenButton" parent="BackLabel"]
+scale = Vector2( 2.8553, 1.14437 )
+shape = SubResource( 3 )
+[connection signal="pressed" from="PanelSettings/VBoxContainer/HBoxFPS/LabelFPS/TouchFPS" to="." method="_on_TouchFPS_pressed"]
+[connection signal="pressed" from="PanelSettings/VBoxContainer/HBoxSound/LabelSound/TouchSound" to="." method="_on_TouchSound_pressed"]
+[connection signal="pressed" from="BackLabel/TouchBack" to="." method="_on_TouchBack_pressed"]

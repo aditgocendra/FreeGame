@@ -27,12 +27,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Free Game"
-run/main_scene="res://src/Map/MapTemplate.tscn"
+run/main_scene="res://src/Intro/Intro.tscn"
+boot_splash/image="res://assets/logo/Arkgame-1.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://assets/logo/logo_game.png"
 
 [autoload]
 
 Autoload="*res://src/Autoload/Autoload.gd"
+Database="*res://src/Autoload/Database.gd"
 
 [display]
 
@@ -74,6 +77,10 @@ mouse_click_left={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [layer_names]
 

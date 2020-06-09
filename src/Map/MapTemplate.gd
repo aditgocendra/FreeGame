@@ -9,7 +9,7 @@ func _ready() -> void:
 
 # warning-ignore:unused_argument
 func _process(delta: float) -> void:
-	label_fps.text = str(Engine.get_frames_per_second())
+	label_fps.text = str(Engine.get_frames_per_second()) + " FPS"
 	if Input.is_action_pressed("reset"):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
@@ -17,9 +17,6 @@ func _process(delta: float) -> void:
 	if player_scene.position.y > 1000:
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
-		
-	
-
 
 func openDoor() -> void:
 	var switch = $SwitchGroup

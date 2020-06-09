@@ -1,0 +1,44 @@
+{
+  "game_settings":{
+    "control_ui":{
+      "touch_left":{
+        "modulate":{
+          "r":1, "g":1, "b":1, "a":1
+        }
+      },
+      "touch_right":{
+        "modulate":{
+          "r":1, "g":1, "b":1, "a":1
+        }
+      },
+      "touch_up":{
+        "modulate":{
+          "r":1, "g":1, "b":1, "a":1
+        }
+      },
+      "touch_attack":{
+        "modulate":{
+          "r":1, "g":1, "b":1, "a":1
+        }
+      },
+      "touch_setting":{
+        "modulate":{
+          "r":1, "g":1, "b":1, "a":1
+        }
+      },
+    },
+    "setting_fps":{
+      "FPSlabel": true
+    },
+    "sound_setting":{
+      "sfx": {
+        "checked": true,
+        "vol": 0
+      },
+      "music": {
+        "checked": true,
+        "vol": 0
+      }
+    }
+  }
+}

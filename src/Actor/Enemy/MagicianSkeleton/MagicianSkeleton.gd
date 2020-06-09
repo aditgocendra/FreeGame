@@ -107,4 +107,6 @@ func _on_AreaAttack_body_entered(body: Node) -> void:
 func _on_AreaAttack_body_exited(body: Node) -> void:
 	if body.name == "Player":
 		if _state == State.WALKING or _state == State.ATTACK:
-			enemy_walk()
+			if _state == State.DEAD:
+				enemy_destroy()
+			else: enemy_walk()

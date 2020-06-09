@@ -7,10 +7,11 @@ const FLOOR_DETECT_DISTANCE = 20.0
 var velocity = Vector2.ZERO
 var gravity = 1000.0
 var FLOOR_NORMAL = Vector2.UP
-
+onready var direction_ui = get_node("Control")
 onready var Gun = $AnimatedPlayer/Gun
 
 func _ready() -> void:
+	
 	$AnimationPlayer.play("Spawn")
 	$SpawnTimer.start()
 
@@ -18,6 +19,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.ZERO
 	direction = get_direction()
+#Mobile UI
+#	direction = direction_ui.calculate_direction_UI()
+#	if direction.y == -1 and is_on_floor():
+#		direction = direction_ui.calculate_direction_UI()
+#	else: direction = Vector2(direction.x, 1)
+#	print(direction)
 	
 	if $SpawnTimer.is_stopped():
 		$AnimationPlayer.stop()
@@ -38,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	
 	var is_shooting = false
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and $AnimatedPlayer.animation != "Dead":
 		is_shooting =  Gun.shoot($AnimatedPlayer.scale.x)
 		$AnimatedPlayer/Gun/AudioShoot.play()
 	
@@ -99,3 +106,6 @@ func die():
 func playAudio():
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		$AudioJump.play()
+
+
+

@@ -17,3 +17,4 @@ func _on_MagicBall_body_entered(body: Node) -> void:
 	elif body.name == "Bullet":
 		queue_free()
 		body.queue_free()
+		
