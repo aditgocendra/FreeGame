@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/UserInterface/Loby/Loby.gd" type="Script" id=1]
 [ext_resource path="res://assets/background/industrial-background.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/font/font_20_UI.tres" type="DynamicFont" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.113725, 0.192157, 0.0980392, 1 )
@@ -14,6 +15,8 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id=2]
 
 [node name="Loby" type="Control"]
 anchor_right = 1.0
@@ -58,3 +61,22 @@ columns = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LabelBack" type="Label" parent="."]
+margin_left = 6.99998
+margin_top = 7.99998
+margin_right = 47.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Back"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="LabelBack"]
+scale = Vector2( 1.96, 1 )
+shape = SubResource( 2 )
+[connection signal="pressed" from="LabelBack/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]

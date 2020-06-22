@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/button/left_move.png" type="Texture" id=1]
 [ext_resource path="res://assets/button/right_move.png" type="Texture" id=2]
@@ -6,81 +6,180 @@
 [ext_resource path="res://assets/button/jump_move.png" type="Texture" id=4]
 [ext_resource path="res://assets/button/setting.png" type="Texture" id=5]
 [ext_resource path="res://src/UserInterface/Control/Control.gd" type="Script" id=6]
+[ext_resource path="res://assets/font/font_32_UI.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/font/font_20_UI.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/button/bg_btn.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 30.0
-
-[sub_resource type="CircleShape2D" id=3]
 radius = 30.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 30.0
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.0
+
 [node name="Control" type="CanvasLayer"]
 script = ExtResource( 6 )
 
-[node name="LeftButtonBot" type="VBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 38.4698
-margin_top = -173.596
-margin_right = 188.47
-margin_bottom = -45.5962
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TouchLeft" type="TouchScreenButton" parent="LeftButtonBot"]
-position = Vector2( 0, 64 )
+[node name="TouchLeft" type="TouchScreenButton" parent="."]
+position = Vector2( 38.4698, 370.404 )
 normal = ExtResource( 1 )
 shape = SubResource( 1 )
 
-[node name="TouchRight" type="TouchScreenButton" parent="LeftButtonBot"]
-position = Vector2( 84, 64 )
+[node name="TouchRight" type="TouchScreenButton" parent="."]
+position = Vector2( 122.47, 370.404 )
 normal = ExtResource( 2 )
-shape = SubResource( 3 )
-
-[node name="TouchUP" type="TouchScreenButton" parent="LeftButtonBot"]
-position = Vector2( 42, 0 )
-normal = ExtResource( 4 )
 shape = SubResource( 2 )
 
-[node name="RightButtonBot" type="VBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -142.428
-margin_top = -144.669
-margin_right = -78.4285
-margin_bottom = -80.6692
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TouchUP" type="TouchScreenButton" parent="."]
+position = Vector2( 80.4698, 306.404 )
+normal = ExtResource( 4 )
+shape = SubResource( 3 )
 
-[node name="TouchAttack" type="TouchScreenButton" parent="RightButtonBot"]
+[node name="TouchAttack" type="TouchScreenButton" parent="."]
+position = Vector2( 699.572, 335.331 )
 normal = ExtResource( 3 )
 
-[node name="RightButtonTop" type="VBoxContainer" parent="."]
-anchor_left = 1.0
+[node name="TouchSetting" type="TouchScreenButton" parent="."]
+position = Vector2( 793.194, 14.9539 )
+normal = ExtResource( 5 )
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+pause_mode = 2
+visible = false
 anchor_right = 1.0
-margin_left = -48.806
-margin_top = 14.9539
-margin_right = -16.806
-margin_bottom = 46.9539
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.443137 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TouchSetting" type="TouchScreenButton" parent="RightButtonTop"]
-normal = ExtResource( 5 )
-[connection signal="pressed" from="LeftButtonBot/TouchLeft" to="." method="_on_TouchLeft_pressed"]
-[connection signal="released" from="LeftButtonBot/TouchLeft" to="." method="_on_TouchLeft_released"]
-[connection signal="pressed" from="LeftButtonBot/TouchRight" to="." method="_on_TouchRight_pressed"]
-[connection signal="released" from="LeftButtonBot/TouchRight" to="." method="_on_TouchRight_released"]
-[connection signal="pressed" from="LeftButtonBot/TouchUP" to="." method="_on_TouchUP_pressed"]
-[connection signal="released" from="LeftButtonBot/TouchUP" to="." method="_on_TouchUP_released"]
-[connection signal="pressed" from="RightButtonBot/TouchAttack" to="." method="_on_TouchAttack_pressed"]
-[connection signal="released" from="RightButtonBot/TouchAttack" to="." method="_on_TouchAttack_released"]
-[connection signal="pressed" from="RightButtonTop/TouchSetting" to="." method="_on_TouchSetting_pressed"]
-[connection signal="released" from="RightButtonTop/TouchSetting" to="." method="_on_TouchSetting_released"]
+[node name="PauseLabel" type="Label" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -30.5
+margin_top = 43.8587
+margin_right = 30.5
+margin_bottom = 76.8587
+custom_fonts/font = ExtResource( 7 )
+text = "Pause"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -144.0
+margin_right = 79.0
+margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackGame" type="TextureRect" parent="PauseOverlay/VBoxContainer"]
+margin_right = 158.0
+margin_bottom = 69.0
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="PauseOverlay/VBoxContainer/BackGame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.5
+margin_top = -11.5
+margin_right = 49.5
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 8 )
+text = "Back To Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackMenu" type="TextureRect" parent="PauseOverlay/VBoxContainer"]
+margin_top = 73.0
+margin_right = 158.0
+margin_bottom = 142.0
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="PauseOverlay/VBoxContainer/BackMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.5
+margin_top = -11.5
+margin_right = 49.5
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 8 )
+text = "Back To Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackLevel" type="TextureRect" parent="PauseOverlay/VBoxContainer"]
+margin_top = 146.0
+margin_right = 158.0
+margin_bottom = 215.0
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="PauseOverlay/VBoxContainer/BackLevel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.5
+margin_top = -11.5
+margin_right = 49.5
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 8 )
+text = "Back To Level"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="TextureRect" parent="PauseOverlay/VBoxContainer"]
+margin_top = 219.0
+margin_right = 158.0
+margin_bottom = 288.0
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="PauseOverlay/VBoxContainer/Quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.5
+margin_top = -11.5
+margin_right = 49.5
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 8 )
+text = "Quit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TouchLeft" to="." method="_on_TouchLeft_pressed"]
+[connection signal="released" from="TouchLeft" to="." method="_on_TouchLeft_released"]
+[connection signal="pressed" from="TouchRight" to="." method="_on_TouchRight_pressed"]
+[connection signal="released" from="TouchRight" to="." method="_on_TouchRight_released"]
+[connection signal="pressed" from="TouchUP" to="." method="_on_TouchUP_pressed"]
+[connection signal="released" from="TouchUP" to="." method="_on_TouchUP_released"]
+[connection signal="pressed" from="TouchAttack" to="." method="_on_TouchAttack_pressed"]
+[connection signal="released" from="TouchAttack" to="." method="_on_TouchAttack_released"]
+[connection signal="pressed" from="TouchSetting" to="." method="_on_TouchSetting_pressed"]
+[connection signal="released" from="TouchSetting" to="." method="_on_TouchSetting_released"]
+[connection signal="gui_input" from="PauseOverlay/VBoxContainer/BackGame" to="." method="_on_BackGame_gui_input"]
+[connection signal="gui_input" from="PauseOverlay/VBoxContainer/BackMenu" to="." method="_on_BackMenu_gui_input"]
+[connection signal="gui_input" from="PauseOverlay/VBoxContainer/BackLevel" to="." method="_on_BackLevel_gui_input"]
+[connection signal="gui_input" from="PauseOverlay/VBoxContainer/Quit" to="." method="_on_Quit_gui_input"]

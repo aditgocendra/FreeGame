@@ -1,0 +1,217 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/button/setting.png" type="Texture" id=1]
+[ext_resource path="res://assets/button/jump_move.png" type="Texture" id=2]
+[ext_resource path="res://assets/button/right_move.png" type="Texture" id=3]
+[ext_resource path="res://src/UserInterface/SubSettings/CustomControl/CustomControlUI.gd" type="Script" id=4]
+[ext_resource path="res://assets/button/attack_player.png" type="Texture" id=5]
+[ext_resource path="res://assets/button/left_move.png" type="Texture" id=6]
+[ext_resource path="res://assets/background/TransparencyBG.png" type="Texture" id=7]
+[ext_resource path="res://src/UserInterface/SubSettings/CustomControl/TouchLeft.gd" type="Script" id=8]
+[ext_resource path="res://src/UserInterface/SubSettings/CustomControl/TouchUP.gd" type="Script" id=9]
+[ext_resource path="res://src/UserInterface/SubSettings/CustomControl/TouchRight.gd" type="Script" id=10]
+[ext_resource path="res://src/UserInterface/SubSettings/CustomControl/TouchAttack.gd" type="Script" id=11]
+[ext_resource path="res://src/UserInterface/SubSettings/CustomControl/TouchSetting.gd" type="Script" id=12]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.803922 )
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 30.0
+
+[node name="CustomControlUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.22772
+margin_top = 1.22772
+margin_right = 1.22772
+margin_bottom = 1.22772
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundText" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.133333 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -129.228
+margin_top = -1.22772
+margin_right = 126.772
+margin_bottom = 118.772
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -120.0
+margin_top = 8.59175
+margin_right = 120.0
+margin_bottom = 58.5918
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxPos" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 23.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelPos" type="Label" parent="Panel/VBoxContainer/HBoxPos"]
+margin_top = 4.0
+margin_right = 77.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "Position :  "
+
+[node name="LabelX" type="Label" parent="Panel/VBoxContainer/HBoxPos"]
+margin_left = 81.0
+margin_top = 4.0
+margin_right = 158.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "X"
+
+[node name="LabelY" type="Label" parent="Panel/VBoxContainer/HBoxPos"]
+margin_left = 162.0
+margin_top = 4.0
+margin_right = 240.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "Y"
+
+[node name="HBoxEditTrans" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 27.0
+margin_right = 240.0
+margin_bottom = 50.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelTrans" type="Label" parent="Panel/VBoxContainer/HBoxEditTrans"]
+margin_top = 4.0
+margin_right = 100.0
+margin_bottom = 18.0
+text = "Transparency :  "
+
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/HBoxEditTrans"]
+margin_left = 104.0
+margin_right = 240.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -40.6001
+margin_right = 100.0
+margin_bottom = -10.6001
+rect_min_size = Vector2( 0, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxBtn" type="HBoxContainer" parent="Panel/VBoxContainer2"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 20 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitBtn" type="Button" parent="Panel/VBoxContainer2/HBoxBtn"]
+margin_right = 64.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Exit"
+
+[node name="ResetBtn" type="Button" parent="Panel/VBoxContainer2/HBoxBtn"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Reset"
+
+[node name="SaveBtn" type="Button" parent="Panel/VBoxContainer2/HBoxBtn"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Save"
+
+[node name="ControlCust" type="CanvasLayer" parent="."]
+
+[node name="TouchLeft" type="TouchScreenButton" parent="ControlCust"]
+position = Vector2( 38.4698, 370.404 )
+normal = ExtResource( 6 )
+shape = SubResource( 2 )
+script = ExtResource( 8 )
+
+[node name="TouchRight" type="TouchScreenButton" parent="ControlCust"]
+position = Vector2( 122.47, 370.404 )
+normal = ExtResource( 3 )
+shape = SubResource( 3 )
+script = ExtResource( 10 )
+
+[node name="TouchUP" type="TouchScreenButton" parent="ControlCust"]
+position = Vector2( 80.4698, 306.404 )
+normal = ExtResource( 2 )
+shape = SubResource( 4 )
+script = ExtResource( 9 )
+
+[node name="TouchAttack" type="TouchScreenButton" parent="ControlCust"]
+position = Vector2( 699.572, 335.331 )
+normal = ExtResource( 5 )
+script = ExtResource( 11 )
+
+[node name="TouchSetting" type="TouchScreenButton" parent="ControlCust"]
+position = Vector2( 793.194, 14.9539 )
+normal = ExtResource( 1 )
+script = ExtResource( 12 )
+[connection signal="value_changed" from="Panel/VBoxContainer/HBoxEditTrans/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="gui_input" from="Panel/VBoxContainer2/HBoxBtn/ExitBtn" to="." method="_on_ExitBtn_gui_input"]
+[connection signal="gui_input" from="Panel/VBoxContainer2/HBoxBtn/ResetBtn" to="." method="_on_ResetBtn_gui_input"]
+[connection signal="gui_input" from="Panel/VBoxContainer2/HBoxBtn/SaveBtn" to="." method="_on_SaveBtn_gui_input"]
+[connection signal="pressed" from="ControlCust/TouchLeft" to="ControlCust/TouchLeft" method="_on_TouchLeft_pressed"]
+[connection signal="released" from="ControlCust/TouchLeft" to="ControlCust/TouchLeft" method="_on_TouchLeft_released"]
+[connection signal="pressed" from="ControlCust/TouchRight" to="ControlCust/TouchRight" method="_on_TouchRight_pressed"]
+[connection signal="released" from="ControlCust/TouchRight" to="ControlCust/TouchRight" method="_on_TouchRight_released"]
+[connection signal="pressed" from="ControlCust/TouchUP" to="ControlCust/TouchUP" method="_on_TouchUP_pressed"]
+[connection signal="released" from="ControlCust/TouchUP" to="ControlCust/TouchUP" method="_on_TouchUP_released"]
+[connection signal="pressed" from="ControlCust/TouchAttack" to="ControlCust/TouchAttack" method="_on_TouchAttack_pressed"]
+[connection signal="released" from="ControlCust/TouchAttack" to="ControlCust/TouchAttack" method="_on_TouchAttack_released"]
+[connection signal="pressed" from="ControlCust/TouchSetting" to="ControlCust/TouchSetting" method="_on_TouchSetting_pressed"]
+[connection signal="released" from="ControlCust/TouchSetting" to="ControlCust/TouchSetting" method="_on_TouchSetting_released"]

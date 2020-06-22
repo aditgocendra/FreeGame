@@ -183,4 +183,5 @@ scale = Vector2( 2.8553, 1.14437 )
 shape = SubResource( 3 )
 [connection signal="pressed" from="PanelSettings/VBoxContainer/HBoxFPS/LabelFPS/TouchFPS" to="." method="_on_TouchFPS_pressed"]
 [connection signal="pressed" from="PanelSettings/VBoxContainer/HBoxSound/LabelSound/TouchSound" to="." method="_on_TouchSound_pressed"]
+[connection signal="pressed" from="PanelSettings/VBoxContainer/HBoxControl/LabelControl/TouchControl" to="." method="_on_TouchControl_pressed"]
 [connection signal="pressed" from="BackLabel/TouchBack" to="." method="_on_TouchBack_pressed"]

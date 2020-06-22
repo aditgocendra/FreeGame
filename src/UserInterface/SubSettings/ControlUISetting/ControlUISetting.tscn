@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/font/font_28_UI_black.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/font_16_UI.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/UserInterface/SubSettings/ControlUISetting/ControlUISetting.gd" type="Script" id=4]
+
+[node name="ControlUISetting" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -242.0
+margin_bottom = -80.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelSett" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -126.5
+margin_top = 13.5374
+margin_right = 126.5
+margin_bottom = 42.5374
+custom_fonts/font = ExtResource( 1 )
+text = "Control UI Setting"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_top = 79.9996
+margin_right = 500.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxKeyboard" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelKeyboard" type="Label" parent="VBoxContainer/HBoxKeyboard"]
+margin_top = 6.0
+margin_right = 234.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Keyboard "
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxKeyboard"]
+margin_left = 238.0
+margin_right = 262.0
+margin_bottom = 37.0
+align = 2
+
+[node name="LabelOnOff" type="Label" parent="VBoxContainer/HBoxKeyboard"]
+margin_left = 266.0
+margin_top = 6.0
+margin_right = 500.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "On"
+valign = 1
+
+[node name="HBoxControlUI" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 41.0
+margin_right = 500.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelUI" type="Label" parent="VBoxContainer/HBoxControlUI"]
+margin_top = 6.0
+margin_right = 234.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Control UI "
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxControlUI"]
+margin_left = 238.0
+margin_right = 262.0
+margin_bottom = 37.0
+align = 2
+
+[node name="LabelOnOff" type="Label" parent="VBoxContainer/HBoxControlUI"]
+margin_left = 266.0
+margin_top = 6.0
+margin_right = 500.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "On"
+valign = 1
+
+[node name="HBoxCustom" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 82.0
+margin_right = 500.0
+margin_bottom = 120.0
+size_flags_vertical = 3
+
+[node name="LabelCustom" type="Label" parent="VBoxContainer/HBoxCustom"]
+margin_top = 7.0
+margin_right = 248.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Custom UI"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxCustom"]
+margin_left = 252.0
+margin_right = 500.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Open Setting"
+[connection signal="pressed" from="VBoxContainer/HBoxKeyboard/CheckBox" to="." method="_on_CheckBox_Keyboard"]
+[connection signal="pressed" from="VBoxContainer/HBoxControlUI/CheckBox" to="." method="_on_CheckBox_ControlUI"]
+[connection signal="gui_input" from="VBoxContainer/HBoxCustom/Button" to="." method="_on_Button_gui_input"]

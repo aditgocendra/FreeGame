@@ -18,6 +18,14 @@ func setFPSLabel():
  
 
 func _on_CheckBox_pressed() -> void:
+	var check
 	if check_box.pressed == true:
-		label_on_off.text = "On"
-	else:label_on_off.text = "Off"
+		check = true
+	else: check = false
+	
+	data["game_settings"]["setting_fps"] = {
+		FPSlabel = check
+	}
+	
+	Database.save_data(data)
+	setFPSLabel()
