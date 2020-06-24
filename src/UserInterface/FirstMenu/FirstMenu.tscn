@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/background/industrial-background.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/button/Asset 9.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/button/Asset 6.png" type="Texture" id=4]
 [ext_resource path="res://src/UserInterface/FirstMenu/FirstMenu.gd" type="Script" id=5]
 [ext_resource path="res://assets/logo/logo_first_menu.png" type="Texture" id=6]
+[ext_resource path="res://assets/sound/btn_click.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
@@ -15,6 +16,69 @@ extents = Vector2( 30, 30 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 30, 30 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "click_btn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Menu/TouchPlay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 84, 32 ), Vector2( 84, 215.348 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Menu/TouchSettings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 32 ), Vector2( -377.364, 32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Menu/TouchQuit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 168, 32 ), Vector2( 549.241, 32 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TransitionRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Logo:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 274, 92.18 ), Vector2( 274, -211.181 ) ]
+}
 
 [node name="FirstMenu" type="Control"]
 anchor_right = 1.0
@@ -45,8 +109,16 @@ anchor_bottom = 0.5
 margin_left = -147.0
 margin_top = -147.82
 margin_right = 147.0
-margin_bottom = 52.1799
+margin_bottom = 52.18
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransitionRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,6 +150,15 @@ shape = SubResource( 2 )
 position = Vector2( 168, 32 )
 normal = ExtResource( 4 )
 shape = SubResource( 3 )
+
+[node name="AnimationMenu" type="AnimationPlayer" parent="."]
+anims/click_btn = SubResource( 4 )
+
+[node name="AudioClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
 [connection signal="pressed" from="Menu/TouchPlay" to="." method="_on_TouchPlay_pressed"]
+[connection signal="released" from="Menu/TouchPlay" to="." method="_on_TouchPlay_released"]
 [connection signal="pressed" from="Menu/TouchSettings" to="." method="_on_TouchSettings_pressed"]
+[connection signal="released" from="Menu/TouchSettings" to="." method="_on_TouchSettings_released"]
 [connection signal="pressed" from="Menu/TouchQuit" to="." method="_on_TouchQuit_pressed"]
+[connection signal="released" from="Menu/TouchQuit" to="." method="_on_TouchQuit_released"]

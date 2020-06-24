@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/font/font_32_UI.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/UserInterface/SubSettings/FPSsetting/SettingFPS.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UserInterface/Settings/Settings.gd" type="Script" id=4]
+[ext_resource path="res://assets/sound/btn_press_sett.wav" type="AudioStream" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.12549, 0.141176, 0.192157, 1 )
@@ -181,6 +182,9 @@ __meta__ = {
 [node name="TouchBack" type="TouchScreenButton" parent="BackLabel"]
 scale = Vector2( 2.8553, 1.14437 )
 shape = SubResource( 3 )
+
+[node name="AudioClickSett" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 [connection signal="pressed" from="PanelSettings/VBoxContainer/HBoxFPS/LabelFPS/TouchFPS" to="." method="_on_TouchFPS_pressed"]
 [connection signal="pressed" from="PanelSettings/VBoxContainer/HBoxSound/LabelSound/TouchSound" to="." method="_on_TouchSound_pressed"]
 [connection signal="pressed" from="PanelSettings/VBoxContainer/HBoxControl/LabelControl/TouchControl" to="." method="_on_TouchControl_pressed"]

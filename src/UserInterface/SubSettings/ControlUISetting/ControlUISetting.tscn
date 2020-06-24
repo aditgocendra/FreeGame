@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/font/font_28_UI_black.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/font/font_16_UI.tres" type="DynamicFont" id=3]
-[ext_resource path="res://src/UserInterface/SubSettings/ControlUISetting/ControlUISetting.gd" type="Script" id=4]
+[ext_resource path="res://src/UserInterface/SubSettings/ControlUISetting/ControlUISetting.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/font_28_UI_black.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/font/font_16_UI.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/sound/btn_press_sett.wav" type="AudioStream" id=5]
 
 [node name="ControlUISetting" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -242.0
 margin_bottom = -80.0
-script = ExtResource( 4 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,7 +23,7 @@ margin_left = -126.5
 margin_top = 13.5374
 margin_right = 126.5
 margin_bottom = 42.5374
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Control UI Setting"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -46,7 +47,7 @@ margin_top = 6.0
 margin_right = 234.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "Keyboard "
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxKeyboard"]
@@ -61,7 +62,7 @@ margin_top = 6.0
 margin_right = 500.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "On"
 valign = 1
 
@@ -77,7 +78,7 @@ margin_top = 6.0
 margin_right = 234.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "Control UI "
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxControlUI"]
@@ -92,7 +93,7 @@ margin_top = 6.0
 margin_right = 500.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "On"
 valign = 1
 
@@ -107,7 +108,7 @@ margin_top = 7.0
 margin_right = 248.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "Custom UI"
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxCustom"]
@@ -115,8 +116,11 @@ margin_left = 252.0
 margin_right = 500.0
 margin_bottom = 38.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "Open Setting"
+
+[node name="AudioClickSett" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 [connection signal="pressed" from="VBoxContainer/HBoxKeyboard/CheckBox" to="." method="_on_CheckBox_Keyboard"]
 [connection signal="pressed" from="VBoxContainer/HBoxControlUI/CheckBox" to="." method="_on_CheckBox_ControlUI"]
 [connection signal="gui_input" from="VBoxContainer/HBoxCustom/Button" to="." method="_on_Button_gui_input"]

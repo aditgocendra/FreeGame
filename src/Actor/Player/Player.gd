@@ -7,24 +7,31 @@ const FLOOR_DETECT_DISTANCE = 20.0
 var velocity = Vector2.ZERO
 var gravity = 1000.0
 var FLOOR_NORMAL = Vector2.UP
+
 onready var direction_ui = get_node("Control")
+onready var data = Database.loadData()
 onready var Gun = $AnimatedPlayer/Gun
 
+var control : bool
+
 func _ready() -> void:
-	
+	control = checkControler()
+	if control == false:
+		remove_child(direction_ui)
 	$AnimationPlayer.play("Spawn")
 	$SpawnTimer.start()
 
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.ZERO
-	direction = get_direction()
-#Mobile UI
-#	direction = direction_ui.calculate_direction_UI()
-#	if direction.y == -1 and is_on_floor():
-#		direction = direction_ui.calculate_direction_UI()
-#	else: direction = Vector2(direction.x, 1)
-#	print(direction)
+	
+	if control == false :
+		direction = get_direction()
+	else : #Mobile UI
+		direction = direction_ui.calculate_direction_UI()
+		if direction.y == -1 and is_on_floor():
+			direction = direction_ui.calculate_direction_UI()
+		else: direction = Vector2(direction.x, 1)
 	
 	if $SpawnTimer.is_stopped():
 		$AnimationPlayer.stop()
@@ -108,4 +115,9 @@ func playAudio():
 		$AudioJump.play()
 
 
-
+func checkControler():
+	
+	var data_controller = data["game_settings"]["game_controller"]
+	if data_controller["control"] == false:
+		return false
+	else: return true

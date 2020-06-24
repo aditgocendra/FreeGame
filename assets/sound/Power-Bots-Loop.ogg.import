@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Power-Bots-Loop.ogg-306ae563757da1370492581b1567d480.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/Power-Bots-Loop.ogg"
+dest_files=[ "res://.import/Power-Bots-Loop.ogg-306ae563757da1370492581b1567d480.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

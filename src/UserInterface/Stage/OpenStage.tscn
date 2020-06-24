@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/button/Asset 13.png" type="Texture" id=1]
+[ext_resource path="res://src/UserInterface/Stage/OpenStage.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/font_28_UI_black.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/UserInterface/Stage/OpenStage.gd" type="Script" id=3]
+[ext_resource path="res://assets/button/Asset 13.png" type="Texture" id=3]
+
 
 [node name="OpenStage" type="TextureRect"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 64, 64 )
-texture = ExtResource( 1 )
-script = ExtResource( 3 )
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

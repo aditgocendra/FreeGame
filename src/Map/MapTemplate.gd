@@ -2,7 +2,10 @@ extends Node2D
 
 onready var label_fps = $LayerFPS/FPSLabel
 onready var player_scene = $Player
+
+
 func _ready() -> void:
+	$AudioBacksound.play()
 # warning-ignore:return_value_discarded
 	Autoload.connect("next", self, "openDoor")
 	

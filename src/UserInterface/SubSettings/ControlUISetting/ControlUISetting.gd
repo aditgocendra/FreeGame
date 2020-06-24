@@ -15,8 +15,11 @@ func _ready() -> void:
 
 func _on_Button_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
+		if event.is_pressed():
+			$AudioClickSett.play()
 # warning-ignore:return_value_discarded
-		get_tree().change_scene(control_cust)
+			yield($AudioClickSett, "finished")
+			get_tree().change_scene(control_cust)
 
 
 func setController() -> void:

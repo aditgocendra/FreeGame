@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/font/font_28_UI_black.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/UserInterface/SubSettings/SoundSetting/SoundSettings.gd" type="Script" id=3]
+[ext_resource path="res://assets/font/font_28_UI_black.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/UserInterface/SubSettings/SoundSetting/SoundSettings.gd" type="Script" id=2]
+[ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=3]
 
 [node name="SoundSettings" type="Control"]
 anchor_right = 1.0
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 margin_right = -242.0
 margin_bottom = -80.0
 rect_min_size = Vector2( 480, 190 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,7 +22,7 @@ margin_left = -40.5
 margin_top = 15.1625
 margin_right = 40.5
 margin_bottom = 44.1625
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 text = "Sound"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -54,7 +54,7 @@ margin_right = 215.0
 margin_bottom = 73.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Sound FX  "
 align = 1
 valign = 1
@@ -92,7 +92,7 @@ margin_right = 215.0
 margin_bottom = 73.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Music"
 align = 1
 valign = 1
