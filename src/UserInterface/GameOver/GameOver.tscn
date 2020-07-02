@@ -1,0 +1,121 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/font/font_50_UI.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/button/bg_btn.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/font_24_UI.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/UserInterface/GameOver/GameOver.gd" type="Script" id=4]
+
+[node name="GameOver" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg_Rect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.768627 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelGameOver" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -128.5
+margin_top = 45.9601
+margin_right = 128.5
+margin_bottom = 96.9601
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.917647, 0.0862745, 0.0862745, 1 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -107.5
+margin_right = 79.0
+margin_bottom = 107.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayAgain" type="TextureRect" parent="VBoxContainer"]
+margin_right = 158.0
+margin_bottom = 69.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayAgain"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.5
+margin_top = -18.6179
+margin_right = 71.5
+margin_bottom = 10.3821
+custom_fonts/font = ExtResource( 3 )
+text = "Play Again"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackMenu" type="TextureRect" parent="VBoxContainer"]
+margin_top = 73.0
+margin_right = 158.0
+margin_bottom = 142.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="VBoxContainer/BackMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.5
+margin_top = -18.6179
+margin_right = 71.5
+margin_bottom = 10.3821
+custom_fonts/font = ExtResource( 3 )
+text = "Back Menu"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackLevel" type="TextureRect" parent="VBoxContainer"]
+margin_top = 146.0
+margin_right = 158.0
+margin_bottom = 215.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="VBoxContainer/BackLevel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.5
+margin_top = -18.6179
+margin_right = 71.5
+margin_bottom = 10.3821
+custom_fonts/font = ExtResource( 3 )
+text = "Back Level"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="VBoxContainer/PlayAgain" to="." method="_on_PlayAgain_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/BackMenu" to="." method="_on_BackMenu_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/BackLevel" to="." method="_on_BackLevel_gui_input"]

@@ -10,7 +10,7 @@ var json_data
 var default_data = {
   "game_settings":{
 	"game_controller":{
-	  "control_ui":true
+	  "control":true
 	},
 	"control_ui":{
 	  "touch_left":{
@@ -61,6 +61,12 @@ var default_data = {
 		"checked": true,
 		"vol": 0
 	  }
+	}
+  },  
+  "stage": {
+	"001": {
+	  "stage_clear": true,
+	  "stage_scene": "res://src/Map/MapTemplate.tscn"
 	}
   }
 }

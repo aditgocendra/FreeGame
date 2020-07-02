@@ -4,7 +4,6 @@
 [ext_resource path="res://assets/font/font_28_UI_black.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/button/Asset 13.png" type="Texture" id=3]
 
-
 [node name="OpenStage" type="TextureRect"]
 margin_right = 40.0
 margin_bottom = 40.0

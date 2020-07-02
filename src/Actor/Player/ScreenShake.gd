@@ -9,9 +9,8 @@ var priority = 0
 
 onready var camera = get_parent()
 
-
-
-
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
 func start(duration = 0.2, frequency = 15, amplitude = 16, priority = 0):
 	if priority >= self.priority:
 		self.priority = priority

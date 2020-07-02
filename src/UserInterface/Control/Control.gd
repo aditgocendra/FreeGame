@@ -8,9 +8,11 @@ onready var touch_up = $TouchUP
 onready var touch_attack = $TouchAttack
 onready var touch_setting = $TouchSetting
 
+var attack_ui = false
 
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("pause"):
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
 		if $PauseOverlay.show() == true:
 			$PauseOverlay.hide()
 		else: $PauseOverlay.show()
@@ -102,6 +104,7 @@ func _on_TouchRight_released() -> void:
 
 
 func _on_TouchAttack_released() -> void:
+	attack_ui = true
 	touch_attack.position.y -= 2
 
 
@@ -111,25 +114,4 @@ func _on_TouchSetting_released() -> void:
 	get_tree().paused = true
 
 
-func _on_BackGame_gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		$PauseOverlay.hide()
-		get_tree().paused = false
-
-
-func _on_Quit_gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		get_tree().quit()
-
-
-func _on_BackMenu_gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		get_tree().paused = false
-		get_tree().change_scene("res://src/UserInterface/FirstMenu/FirstMenu.tscn")
-
-
-func _on_BackLevel_gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		get_tree().paused = false
-		get_tree().change_scene("res://src/UserInterface/Loby/Loby.tscn")
 

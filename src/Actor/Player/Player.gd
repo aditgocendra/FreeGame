@@ -4,20 +4,23 @@ extends KinematicBody2D
 export var speed = Vector2(220.0, 700.0)
 
 const FLOOR_DETECT_DISTANCE = 20.0
+
 var velocity = Vector2.ZERO
 var gravity = 1000.0
 var FLOOR_NORMAL = Vector2.UP
 
-onready var direction_ui = get_node("Control")
+var control : bool
+
+onready var control_ui = get_node("Control")
 onready var data = Database.loadData()
 onready var Gun = $AnimatedPlayer/Gun
+onready var health_bar = $PlayerBar/PlayerBar/PlayerHead/HealthBar
 
-var control : bool
 
 func _ready() -> void:
 	control = checkControler()
 	if control == false:
-		remove_child(direction_ui)
+		remove_child(control_ui)
 	$AnimationPlayer.play("Spawn")
 	$SpawnTimer.start()
 
@@ -28,9 +31,9 @@ func _physics_process(delta: float) -> void:
 	if control == false :
 		direction = get_direction()
 	else : #Mobile UI
-		direction = direction_ui.calculate_direction_UI()
+		direction = control_ui.calculate_direction_UI()
 		if direction.y == -1 and is_on_floor():
-			direction = direction_ui.calculate_direction_UI()
+			direction = control_ui.calculate_direction_UI()
 		else: direction = Vector2(direction.x, 1)
 	
 	if $SpawnTimer.is_stopped():
@@ -52,14 +55,16 @@ func _physics_process(delta: float) -> void:
 	
 	var is_shooting = false
 	
-	if Input.is_action_just_pressed("shoot") and $AnimatedPlayer.animation != "Dead":
+	if Input.is_action_just_pressed("shoot") or control_ui.attack_ui  and $AnimatedPlayer.animation != "Dead":
+		control_ui.attack_ui = false
 		is_shooting =  Gun.shoot($AnimatedPlayer.scale.x)
 		$AnimatedPlayer/Gun/AudioShoot.play()
-	
+		
+		
 	if $AnimatedPlayer.animation == "Dead" and $TimerAnimation.is_stopped():
-# warning-ignore:return_value_discarded
-			get_tree().reload_current_scene()
-	
+		get_tree().paused = true
+		$GameOver/GameOver.show()
+		
 	var animation = setAnimation(is_shooting)
 	
 	if $AnimatedPlayer.animation != animation and $TimerAnimation.is_stopped():
@@ -94,20 +99,29 @@ func setAnimation(is_shoot):
 		 
 	if is_shoot:
 		if velocity.y != 0 and velocity.x != 0:
-			new_animation = "JumpShoot"
+				new_animation = "JumpShoot"
 		elif velocity.x != 0:   
 			new_animation = "RunShoot"
 		elif velocity.y != 0:
 			new_animation = "JumpShoot" 
 		else : new_animation = "Shoot"
 	
-	
 	return new_animation
 
 
 func die():
-	$TimerAnimation.start()
-	$AnimatedPlayer.play("Dead")
+	if health_bar.value <= 0:
+		$TimerAnimation.start()
+		$AnimatedPlayer.play("Dead")
+	else: 
+		health_bar.value -= 25
+		if health_bar.value <= 0:
+			$TimerAnimation.start()
+			$AnimatedPlayer.play("Dead")
+		else :
+			$AnimationPlayer.play("Spawn")
+			$SpawnTimer.start()
+		
 	
 
 func playAudio():
@@ -116,7 +130,6 @@ func playAudio():
 
 
 func checkControler():
-	
 	var data_controller = data["game_settings"]["game_controller"]
 	if data_controller["control"] == false:
 		return false

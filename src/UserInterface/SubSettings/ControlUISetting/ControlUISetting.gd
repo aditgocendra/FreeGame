@@ -12,6 +12,7 @@ onready var data = Database.loadData()
 
 func _ready() -> void:
 	setController()
+	
 
 func _on_Button_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
@@ -30,9 +31,12 @@ func setController() -> void:
 		
 
 func _on_CheckBox_Keyboard() -> void:
-	data["game_settings"]["game_controller"]["control"] = false
-	Database.save_data(data)
-	setKeyboardOn()
+	var system_operation = OS.get_name()
+	
+	if system_operation != "Android":
+		data["game_settings"]["game_controller"]["control"] = false
+		Database.save_data(data)
+		setKeyboardOn()
 
 func _on_CheckBox_ControlUI() -> void:
 	data["game_settings"]["game_controller"]["control"] = true
@@ -50,3 +54,5 @@ func setKeyboardOn() -> void:
 	control_ui_label.text = "OFF"
 	keyboard_check.pressed = true
 	keyboard_label.text = "ON"
+
+

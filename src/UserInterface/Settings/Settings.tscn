@@ -154,6 +154,7 @@ margin_left = -389.0
 margin_top = -215.0
 margin_right = 211.0
 margin_bottom = 185.0
+rect_min_size = Vector2( 600, 400 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

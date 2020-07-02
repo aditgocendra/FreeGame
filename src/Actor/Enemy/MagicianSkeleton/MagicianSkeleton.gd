@@ -8,19 +8,20 @@ enum State {
 	ATTACK
 }
 
-
 var _state = State.WALKING
 var speed = 200.0
 var velocity = Vector2.ZERO
 var gravity = ProjectSettings.get("physics/2d/default_gravity")
 var playerPosition = null
 var magic_shoot = false
+
 const FLOOR_NORMAL = Vector2.UP
 
 onready var floor_detector_left = $FloorDetectorLeft
 onready var floor_detector_right = $FloorDetectorRight
 onready var sprite = $AnimatedSprite
 onready var Magic = $AnimatedSprite/Magic
+onready var area_att_col = $AreaAttack/CollisionShape2D
 
 func _ready() -> void:
 	enemy_walk()
@@ -28,6 +29,10 @@ func _ready() -> void:
 
 # warning-ignore:unused_argument
 func _physics_process(delta: float) -> void:
+	if sprite.scale.x == 1:
+		area_att_col.position.x = -236
+	else: area_att_col.position.x = 236
+	
 	velocity = calculate_move_velocity(velocity)
 	
 	velocity.y = move_and_slide(velocity, FLOOR_NORMAL).y
@@ -38,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		else: sprite.scale.x = -1 
 		if magic_shoot == true and $AnimatedSprite.animation == "Attack":
 			Magic.magic_shoot(sprite.scale.x)
-			magic_shoot = false
+			
 	else : sprite.scale.x = -1 if velocity.x > 0 else 1 
 	
 	
@@ -52,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if animation == "Dead":
+		self.set_physics_process(false)
 		yield(sprite, "animation_finished")
 		queue_free()
 	
@@ -90,7 +96,6 @@ func enemy_attack():
 	velocity = Vector2.ZERO
 	
 	
-	
 func enemy_walk():
 	_state = State.WALKING
 	velocity.y += gravity * get_physics_process_delta_time()
@@ -101,7 +106,6 @@ func _on_AreaAttack_body_entered(body: Node) -> void:
 		playerPosition = body.position
 		enemy_attack()
 		magic_shoot = true
-		
 		
 
 func _on_AreaAttack_body_exited(body: Node) -> void:

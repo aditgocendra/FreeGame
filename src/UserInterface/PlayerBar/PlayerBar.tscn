@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/health-bar/bg-lifebar.png" type="Texture" id=1]
+[ext_resource path="res://assets/health-bar/health-bar-3.png" type="Texture" id=2]
+[ext_resource path="res://assets/health-bar/health-bar-1.png" type="Texture" id=3]
+[ext_resource path="res://src/UserInterface/PlayerBar/PlayerBar.gd" type="Script" id=4]
+[ext_resource path="res://assets/health-bar/health-bar-2.png" type="Texture" id=5]
+
+[node name="PlayerBar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -616.0
+margin_bottom = -414.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerHead" type="TextureRect" parent="."]
+margin_right = 226.0
+margin_bottom = 66.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="PlayerHead"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -53.5
+margin_top = -10.5
+margin_right = 53.5
+margin_bottom = 10.5
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.2, 0.219608, 0.278431, 1 )
+tint_over = Color( 1, 1, 1, 0 )
+tint_progress = Color( 1, 0.054902, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -25,7 +25,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 3.5, 6.4 ),
+"times": PoolRealArray( 1, 5.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -57,7 +57,6 @@ hframes = 8
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -58.958, -88.1593, 1.53275, -125.069, 63.0488, -87.134, 74.3268, -10.239, 49.7204, 35.8981, 3.58328, 54.3529, -61.0086, 32.8223, -74.337, -11.2642 )
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 3.5
