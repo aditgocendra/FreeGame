@@ -8,8 +8,11 @@ var fps = null
 
 
 func _ready() -> void:
-	$AudioBacksound.play()
 	checkFPS_OnOff()
+	
+	if Database.music == true:
+		$AudioBacksound.play()
+	
 # warning-ignore:return_value_discarded
 	Autoload.connect("next", self, "openDoor")
 	
@@ -55,3 +58,11 @@ func checkFPS_OnOff():
 	if fps_setting["FPSlabel"] == true:
 		fps = true
 	else : fps = false
+	
+	
+#func checkMusic_OnOff():
+#	var music_sett = data["game_settings"]["sound_setting"]
+#	if music_sett["music"]["checked"] == true:
+#		return true
+#	else : return false
+	

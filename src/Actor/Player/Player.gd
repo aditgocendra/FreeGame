@@ -10,6 +10,7 @@ var gravity = 1000.0
 var FLOOR_NORMAL = Vector2.UP
 
 var control : bool
+var sfx = null
 
 onready var control_ui = get_node("Control")
 onready var data = Database.loadData()
@@ -18,7 +19,9 @@ onready var health_bar = $PlayerBar/PlayerBar/PlayerHead/HealthBar
 
 
 func _ready() -> void:
+	print(Database.sfx)
 	control = checkControler()
+#	sfx = checkSfx_OnOff()
 	if control == false:
 		remove_child(control_ui)
 	$AnimationPlayer.play("Spawn")
@@ -38,8 +41,9 @@ func _physics_process(delta: float) -> void:
 	
 	if $SpawnTimer.is_stopped():
 		$AnimationPlayer.stop()
-		
-	playAudio()
+	
+	if Database.sfx == true:
+		playAudio()
 	
 	var is_jump_interrupted = Input.is_action_just_released("Jump") and velocity.y < 0.0
 	velocity = calculateMovement(velocity, direction, delta, is_jump_interrupted)
@@ -58,7 +62,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot") or control_ui.attack_ui  and $AnimatedPlayer.animation != "Dead":
 		control_ui.attack_ui = false
 		is_shooting =  Gun.shoot($AnimatedPlayer.scale.x)
-		$AnimatedPlayer/Gun/AudioShoot.play()
+		
 		
 		
 	if $AnimatedPlayer.animation == "Dead" and $TimerAnimation.is_stopped():
@@ -119,7 +123,7 @@ func die():
 			$TimerAnimation.start()
 			$AnimatedPlayer.play("Dead")
 		else :
-			$AnimationPlayer.play("Spawn")
+			$AnimationPlayer.play("HitAnim")
 			$SpawnTimer.start()
 		
 	
@@ -127,6 +131,8 @@ func die():
 func playAudio():
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		$AudioJump.play()
+	if Input.is_action_just_pressed("shoot") or control_ui.attack_ui  and $AnimatedPlayer.animation != "Dead":
+		$AnimatedPlayer/Gun/AudioShoot.play()
 
 
 func checkControler():
@@ -134,3 +140,7 @@ func checkControler():
 	if data_controller["control"] == false:
 		return false
 	else: return true
+
+
+
+

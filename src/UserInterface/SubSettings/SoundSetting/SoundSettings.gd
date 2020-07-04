@@ -60,6 +60,7 @@ func update_sound() -> void:
 	data["game_settings"]["sound_setting"] = new_data_sound
 	
 	Database.save_data(data)
+	Database.sfx = Database.checkSfx_OnOff(data)
 
 
 

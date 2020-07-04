@@ -429,6 +429,9 @@ position = Vector2( 28.5033, -125.677 )
 [node name="Switch4" parent="SwitchGroup" instance=ExtResource( 21 )]
 position = Vector2( 3616.98, 258.423 )
 
+[node name="Switch5" parent="SwitchGroup" instance=ExtResource( 21 )]
+position = Vector2( 1926.55, 129.739 )
+
 [node name="EnemyGroup" type="Node2D" parent="."]
 
 [node name="Enemy" parent="EnemyGroup" instance=ExtResource( 23 )]

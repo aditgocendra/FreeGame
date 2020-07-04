@@ -29,13 +29,21 @@ func _ready() -> void:
 
 # warning-ignore:unused_argument
 func _physics_process(delta: float) -> void:
+	if sprite.animation == "Dead":
+		self.set_physics_process(false)
+		yield(sprite, "animation_finished")
+		queue_free()
+	
+	
 	if sprite.scale.x == 1:
 		area_att_col.position.x = -236
 	else: area_att_col.position.x = 236
+		
 	
 	velocity = calculate_move_velocity(velocity)
 	
 	velocity.y = move_and_slide(velocity, FLOOR_NORMAL).y
+	
 	
 	if _state == State.ATTACK:
 		if self.position.x > playerPosition.x:
@@ -46,21 +54,12 @@ func _physics_process(delta: float) -> void:
 			
 	else : sprite.scale.x = -1 if velocity.x > 0 else 1 
 	
-	
 	var animation = get_new_animation()
-	
 	
 	if animation != sprite.animation and $TimerAnimation.is_stopped():
 		if magic_shoot:
 			$TimerAnimation.start()
 		sprite.play(animation)
-	
-	
-	if animation == "Dead":
-		self.set_physics_process(false)
-		yield(sprite, "animation_finished")
-		queue_free()
-	
 	
 	
 func calculate_move_velocity(linear_velocity):

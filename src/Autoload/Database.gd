@@ -6,6 +6,11 @@ var _file
 
 var json_data
 
+# set sound
+var music
+var sfx 
+#----------
+
 
 var default_data = {
   "game_settings":{
@@ -73,14 +78,16 @@ var default_data = {
 
 
 func _ready() -> void:
-	loadData()
-
+	var _data =  loadData()
+	sfx = checkSfx_OnOff(_data)
+	music = checkMusic_OnOff(_data)
 
 func loadData():
 	_file = File.new()
 		
 	if not _file.file_exists(db_path):
 		save_data(default_data)
+		return default_data
 	else:
 		_file.open(db_path, File.READ)
 		
@@ -96,3 +103,17 @@ func save_data(new_data):
 	_file.open(db_path, File.WRITE)
 	_file.store_line(to_json(new_data))
 	_file.close()
+
+
+func checkSfx_OnOff(data):
+	var sfx_sett = data["game_settings"]["sound_setting"]
+	if sfx_sett["sfx"]["checked"] == true:
+		 return true
+	else : return false
+
+
+func checkMusic_OnOff(data):
+	var music_sett = data["game_settings"]["sound_setting"]
+	if music_sett["music"]["checked"] == true:
+		return true
+	else : return false
