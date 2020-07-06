@@ -38,6 +38,8 @@ func _physics_process(delta: float) -> void:
 	if sprite.scale.x == 1:
 		area_att_col.position.x = -236
 	else: area_att_col.position.x = 236
+	
+	
 		
 	
 	velocity = calculate_move_velocity(velocity)
@@ -46,9 +48,9 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if _state == State.ATTACK:
-		if self.position.x > playerPosition.x:
-			sprite.scale.x = 1  
-		else: sprite.scale.x = -1 
+#		if self.position.x > playerPosition.x:
+#			sprite.scale.x = 1  
+#		else: sprite.scale.x = -1 
 		if magic_shoot == true and $AnimatedSprite.animation == "Attack":
 			Magic.magic_shoot(sprite.scale.x)
 			

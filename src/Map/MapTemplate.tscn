@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/tileset/png/Tiles/BGTile (1).png" type="Texture" id=1]
 [ext_resource path="res://assets/tileset/png/Tiles/BGTile (2).png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://assets/shader/water.shader" type="Shader" id=26]
 [ext_resource path="res://icon.png" type="Texture" id=27]
 [ext_resource path="res://src/UserInterface/Pause/PauseOverlay.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/Actor/Enemy/WarriorSkeleton/WarriorSkeleton.tscn" type="PackedScene" id=29]
 
 [sub_resource type="TileSet" id=1]
 0/name = "BGTile (1).png 0"
@@ -362,7 +363,7 @@ tile_data = PoolIntArray( -327680, 0, 0, -327679, 1, 0, -327678, 1, 0, -327677, 
 
 [node name="TilePoison" type="TileMap" parent="."]
 scale = Vector2( 0.25, 0.25 )
-z_index = 1
+z_index = 3
 tile_set = SubResource( 2 )
 cell_size = Vector2( 256, 256 )
 format = 1
@@ -427,20 +428,6 @@ position = Vector2( 28.5033, -125.677 )
 [node name="Switch4" parent="SwitchGroup" instance=ExtResource( 21 )]
 position = Vector2( 3616.98, 258.423 )
 
-[node name="EnemyGroup" type="Node2D" parent="."]
-
-[node name="Enemy" parent="EnemyGroup" instance=ExtResource( 23 )]
-position = Vector2( 314.454, -171.536 )
-
-[node name="Enemy2" parent="EnemyGroup" instance=ExtResource( 23 )]
-position = Vector2( 1728.15, 91.4388 )
-
-[node name="Enemy3" parent="EnemyGroup" instance=ExtResource( 23 )]
-position = Vector2( 1746.84, 594.626 )
-
-[node name="Enemy4" parent="EnemyGroup" instance=ExtResource( 23 )]
-position = Vector2( 4726.89, -94.8438 )
-
 [node name="BarelGroup" type="Node2D" parent="."]
 z_index = 1
 
@@ -471,6 +458,27 @@ position = Vector2( 4079.23, 81.2222 )
 [node name="Barel9" parent="BarelGroup" instance=ExtResource( 22 )]
 position = Vector2( 2094.66, 656.914 )
 
+[node name="EnemyGroup" type="Node2D" parent="."]
+
+[node name="MagicianGroup" type="Node2D" parent="EnemyGroup"]
+
+[node name="Enemy" parent="EnemyGroup/MagicianGroup" instance=ExtResource( 23 )]
+position = Vector2( 314.454, -171.536 )
+
+[node name="Enemy2" parent="EnemyGroup/MagicianGroup" instance=ExtResource( 23 )]
+position = Vector2( 1728.15, 91.4388 )
+
+[node name="Enemy3" parent="EnemyGroup/MagicianGroup" instance=ExtResource( 23 )]
+position = Vector2( 1746.84, 594.626 )
+
+[node name="Enemy4" parent="EnemyGroup/MagicianGroup" instance=ExtResource( 23 )]
+position = Vector2( 4726.89, -94.8438 )
+
+[node name="WarriorGroup" type="Node2D" parent="EnemyGroup"]
+
+[node name="WarriorSkeleton" parent="EnemyGroup/WarriorGroup" instance=ExtResource( 29 )]
+position = Vector2( 489.904, 595.116 )
+
 [node name="Portal" parent="." instance=ExtResource( 20 )]
 position = Vector2( 5378.44, 611.588 )
 z_index = -1
@@ -479,7 +487,7 @@ z_index = -1
 material = SubResource( 12 )
 position = Vector2( 2728.88, 972.069 )
 scale = Vector2( 87.0101, 5.76001 )
-z_index = 2
+z_index = 3
 texture = ExtResource( 27 )
 
 [node name="AudioBacksound" type="AudioStreamPlayer" parent="."]

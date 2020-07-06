@@ -59,10 +59,4 @@ func checkFPS_OnOff():
 		fps = true
 	else : fps = false
 	
-	
-#func checkMusic_OnOff():
-#	var music_sett = data["game_settings"]["sound_setting"]
-#	if music_sett["music"]["checked"] == true:
-#		return true
-#	else : return false
-	
+

@@ -11,7 +11,9 @@ func _on_body_entered(body: Node) -> void:
 	if body is MagicianEnemy:
 		body.enemy_destroy()
 		queue_free()
-
+	if body is WarriorEnemy:
+		body.enemy_destroy()
+		queue_free()
 
 
 func _on_BulletSprite_animation_finished() -> void:

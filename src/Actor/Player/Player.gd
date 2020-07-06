@@ -19,7 +19,7 @@ onready var health_bar = $PlayerBar/PlayerBar/PlayerHead/HealthBar
 
 
 func _ready() -> void:
-	print(Database.sfx)
+	
 	control = checkControler()
 #	sfx = checkSfx_OnOff()
 	if control == false:

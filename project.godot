@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "TouchCustom",
 "language": "GDScript",
 "path": "res://src/UserInterface/SubSettings/CustomControl/TouchCustom.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "WarriorEnemy",
+"language": "GDScript",
+"path": "res://src/Actor/Enemy/WarriorSkeleton/WarriorSkeleton.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "MagicianEnemy": "",
 "Player": "",
 "ScreenShake": "",
-"TouchCustom": ""
+"TouchCustom": "",
+"WarriorEnemy": ""
 }
 
 [application]

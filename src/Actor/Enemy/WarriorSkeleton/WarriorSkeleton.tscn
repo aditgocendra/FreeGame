@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/enemy/Warrior Skeleton/Walking/Separate Sp/walk (2).png" type="Texture" id=1]
 [ext_resource path="res://assets/enemy/Warrior Skeleton/Walking/Separate Sp/walk (3).png" type="Texture" id=2]
@@ -41,7 +41,12 @@ animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "Attack",
-"speed": 7.0
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "Spawn",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ) ],
 "loop": true,
@@ -50,45 +55,62 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 128.288, 208.925 )
+extents = Vector2( 111.423, 208.925 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 72.7848
 height = 237.373
 
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 85.6038
+height = 134.91
+
 [node name="WarriorSkeleton" type="KinematicBody2D"]
 scale = Vector2( 0.3, 0.3 )
+z_index = 1
 collision_layer = 2
 collision_mask = 2147483660
 script = ExtResource( 30 )
 
 [node name="PlatformDetectRight" type="RayCast2D" parent="."]
-position = Vector2( 141.938, 0.882899 )
+position = Vector2( 116.172, 0.882899 )
 scale = Vector2( 1, 5 )
 enabled = true
 collision_mask = 8
 
 [node name="PlatformDetectLeft" type="RayCast2D" parent="."]
-position = Vector2( -155.195, 0 )
+position = Vector2( -117.537, 0 )
 scale = Vector2( 1, 5 )
 enabled = true
 collision_mask = 8
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Walk"
+animation = "Attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -8.81795 )
+position = Vector2( 0, -13.3333 )
 shape = SubResource( 2 )
 
 [node name="TimerAnimation" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
-[node name="AreaAttack" type="Area2D" parent="."]
+[node name="AreaDetectPlayer" type="Area2D" parent="."]
+collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetectPlayer"]
 modulate = Color( 0.396078, 0.231373, 0.756863, 1 )
-position = Vector2( -103.826, 0 )
+position = Vector2( -75, 0 )
 shape = SubResource( 3 )
-[connection signal="body_entered" from="AreaAttack" to="." method="_on_AreaAttack_body_entered"]
+
+[node name="AreaHit" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHit"]
+modulate = Color( 0.0509804, 0.901961, 0.223529, 1 )
+position = Vector2( -101.225, -6.67421 )
+shape = SubResource( 4 )
+[connection signal="body_entered" from="AreaDetectPlayer" to="." method="_on_AreaAttack_body_entered"]
+[connection signal="body_exited" from="AreaDetectPlayer" to="." method="_on_AreaAttack_body_exited"]
+[connection signal="body_entered" from="AreaHit" to="." method="_on_AreaHit_body_entered"]

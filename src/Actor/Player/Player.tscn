@@ -83,6 +83,21 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 41 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "RunShoot",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 71 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 69 ), ExtResource( 67 ), ExtResource( 72 ), ExtResource( 65 ), ExtResource( 70 ) ],
+"loop": true,
+"name": "Melee",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Idle",
@@ -93,29 +108,14 @@ animations = [ {
 "name": "Jump",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 50 ), ExtResource( 55 ), ExtResource( 59 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 56 ), ExtResource( 57 ) ],
-"loop": true,
-"name": "Dead",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 34 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 35 ) ],
 "loop": true,
 "name": "JumpShoot",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 71 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 69 ), ExtResource( 67 ), ExtResource( 72 ), ExtResource( 65 ), ExtResource( 70 ) ],
+"frames": [ ExtResource( 74 ), ExtResource( 79 ), ExtResource( 73 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 78 ) ],
 "loop": true,
-"name": "Melee",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 41 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 42 ) ],
-"loop": true,
-"name": "RunShoot",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "Run",
+"name": "JumpMelee",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 31 ), ExtResource( 30 ), ExtResource( 32 ), ExtResource( 33 ) ],
@@ -123,16 +123,16 @@ animations = [ {
 "name": "Shoot",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 74 ), ExtResource( 79 ), ExtResource( 73 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 78 ) ],
+"frames": [ ExtResource( 50 ), ExtResource( 55 ), ExtResource( 59 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 56 ), ExtResource( 57 ) ],
 "loop": true,
-"name": "JumpMelee",
+"name": "Dead",
 "speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 135.107, 246.873 )
+extents = Vector2( 113.002, 206.5 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "HitAnim"
 length = 0.5
 tracks/0/type = "value"
@@ -148,8 +148,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0.380392, 0.0745098, 0.0862745, 0.337255 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Spawn"
+[sub_resource type="Animation" id=4]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -211,7 +210,7 @@ one_shot = true
 [node name="Frequency" type="Timer" parent="Camera2D/ScreenShake"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -20.8548, -24.1826 )
+position = Vector2( -14.0308, 24.169 )
 shape = SubResource( 2 )
 
 [node name="TimerAnimation" type="Timer" parent="."]
@@ -224,8 +223,8 @@ wait_time = 1.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/HitAnim = SubResource( 4 )
-anims/Spawn = SubResource( 3 )
+anims/HitAnim = SubResource( 3 )
+anims/Spawn = SubResource( 4 )
 
 [node name="AudioJump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 60 )
