@@ -41,16 +41,16 @@ animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "Attack",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "Dead",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 28 ) ],
 "loop": true,
 "name": "Spawn",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "Dead",
 "speed": 10.0
 } ]
 
@@ -58,8 +58,8 @@ animations = [ {
 extents = Vector2( 111.423, 208.925 )
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 72.7848
-height = 237.373
+radius = 8.60347
+height = 398.251
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 85.6038
@@ -86,14 +86,14 @@ collision_mask = 8
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Attack"
+animation = "Spawn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -13.3333 )
 shape = SubResource( 2 )
 
 [node name="TimerAnimation" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 one_shot = true
 
 [node name="AreaDetectPlayer" type="Area2D" parent="."]
@@ -101,7 +101,7 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetectPlayer"]
 modulate = Color( 0.396078, 0.231373, 0.756863, 1 )
-position = Vector2( -75, 0 )
+position = Vector2( -89.9662, 0 )
 shape = SubResource( 3 )
 
 [node name="AreaHit" type="Area2D" parent="."]

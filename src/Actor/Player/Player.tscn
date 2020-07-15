@@ -83,14 +83,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 41 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 42 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 23 ), ExtResource( 29 ), ExtResource( 20 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 24 ) ],
 "loop": true,
-"name": "RunShoot",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 71 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 69 ), ExtResource( 67 ), ExtResource( 72 ), ExtResource( 65 ), ExtResource( 70 ) ],
-"loop": true,
-"name": "Melee",
+"name": "Jump",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 12 ) ],
@@ -98,14 +93,19 @@ animations = [ {
 "name": "Run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 71 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 69 ), ExtResource( 67 ), ExtResource( 72 ), ExtResource( 65 ), ExtResource( 70 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Melee",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 23 ), ExtResource( 29 ), ExtResource( 20 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 74 ), ExtResource( 79 ), ExtResource( 73 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 78 ) ],
 "loop": true,
-"name": "Jump",
+"name": "JumpMelee",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "RunShoot",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 35 ) ],
@@ -113,9 +113,9 @@ animations = [ {
 "name": "JumpShoot",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 74 ), ExtResource( 79 ), ExtResource( 73 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 78 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "JumpMelee",
+"name": "Idle",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 31 ), ExtResource( 30 ), ExtResource( 32 ), ExtResource( 33 ) ],
@@ -147,6 +147,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0.380392, 0.0745098, 0.0862745, 0.337255 ), Color( 0, 0, 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitLayer/ColorHit:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.5
@@ -168,15 +180,23 @@ tracks/0/keys = {
 position = Vector2( 1.88937, -46.9652 )
 scale = Vector2( 0.2, 0.2 )
 z_index = 2
+collision_mask = 140
 script = ExtResource( 62 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 399.945 ]
 }
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
-position = Vector2( -10.1954, 240.611 )
+position = Vector2( -10.1954, 232.117 )
 enabled = true
 collision_mask = 4
+
+[node name="PoisonDetector" type="RayCast2D" parent="."]
+modulate = Color( 0.0509804, 0.0862745, 0.431373, 1 )
+position = Vector2( -9.92126, 203.868 )
+enabled = true
+collision_mask = 128
+collide_with_areas = true
 
 [node name="AnimatedPlayer" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -210,7 +230,7 @@ one_shot = true
 [node name="Frequency" type="Timer" parent="Camera2D/ScreenShake"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -14.0308, 24.169 )
+position = Vector2( -14.0308, 27.8853 )
 shape = SubResource( 2 )
 
 [node name="TimerAnimation" type="Timer" parent="."]
@@ -231,6 +251,17 @@ stream = ExtResource( 60 )
 
 [node name="Control" parent="." instance=ExtResource( 61 )]
 
+[node name="HitLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorHit" type="ColorRect" parent="HitLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameOver" type="CanvasLayer" parent="."]
 
 [node name="GameOver" parent="GameOver" instance=ExtResource( 63 )]
@@ -239,16 +270,5 @@ visible = false
 [node name="PlayerBar" type="CanvasLayer" parent="."]
 
 [node name="PlayerBar" parent="PlayerBar" instance=ExtResource( 64 )]
-
-[node name="HitLayer" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="ColorHit" type="ColorRect" parent="HitLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="timeout" from="Camera2D/ScreenShake/Duration" to="Camera2D/ScreenShake" method="_on_Duration_timeout"]
 [connection signal="timeout" from="Camera2D/ScreenShake/Frequency" to="Camera2D/ScreenShake" method="_on_Frequency_timeout"]

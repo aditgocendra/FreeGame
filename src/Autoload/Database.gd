@@ -69,9 +69,15 @@ var default_data = {
 	}
   },  
   "stage": {
-	"001": {
+	"0": {
 	  "stage_clear": true,
-	  "stage_scene": "res://src/Map/MapTemplate.tscn"
+	  "stage_name": "Map1",
+	  "stage_scene": "res://src/Map/Map1.tscn"
+	},
+	"1": {
+	  "stage_clear": false,
+	  "stage_name": "Map1",
+	  "stage_scene": "res://src/Map/Map2.tscn"
 	}
   }
 }

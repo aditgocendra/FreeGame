@@ -4,10 +4,13 @@ onready var label_fps = $LayerFPS/FPSLabel
 onready var player_scene = $Player
 onready var data = Database.loadData()
 
+
 var fps = null
 
 
 func _ready() -> void:
+	if get_tree().paused == true:
+		get_tree().paused = false
 	checkFPS_OnOff()
 	
 	if Database.music == true:
@@ -17,7 +20,6 @@ func _ready() -> void:
 	Autoload.connect("next", self, "openDoor")
 	
 	
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		var pause = get_node("PauseLayer/PauseOverlay")
@@ -26,16 +28,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset"):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
-
-
+		
+	
 # warning-ignore:unused_argument
 func _process(delta: float) -> void:
 	if fps == true :
 		label_fps.text = str(Engine.get_frames_per_second()) + " FPS"
-
-	if player_scene.position.y > 1000:
-# warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
 
 func openDoor() -> void:
 	var switch = $SwitchGroup

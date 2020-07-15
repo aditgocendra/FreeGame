@@ -4,6 +4,11 @@ extends Control
 var next_scene = "res://src/UserInterface/Loby/Loby.tscn"
 var setting_scene = "res://src/UserInterface/Settings/Settings.tscn"
 
+func _ready():
+	if get_tree().paused == true:
+		get_tree().paused = false
+
+
 func _on_TouchPlay_pressed() -> void:
 	$Menu/TouchPlay.position.y += 2
 

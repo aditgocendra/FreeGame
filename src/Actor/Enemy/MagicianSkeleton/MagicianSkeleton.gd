@@ -38,14 +38,9 @@ func _physics_process(delta: float) -> void:
 	if sprite.scale.x == 1:
 		area_att_col.position.x = -236
 	else: area_att_col.position.x = 236
-	
-	
 		
-	
 	velocity = calculate_move_velocity(velocity)
-	
 	velocity.y = move_and_slide(velocity, FLOOR_NORMAL).y
-	
 	
 	if _state == State.ATTACK:
 #		if self.position.x > playerPosition.x:
@@ -54,7 +49,9 @@ func _physics_process(delta: float) -> void:
 		if magic_shoot == true and $AnimatedSprite.animation == "Attack":
 			Magic.magic_shoot(sprite.scale.x)
 			
-	else : sprite.scale.x = -1 if velocity.x > 0 else 1 
+	else :
+		if _state != State.DEAD: 
+			sprite.scale.x = -1 if velocity.x > 0 else 1 
 	
 	var animation = get_new_animation()
 	
@@ -114,4 +111,6 @@ func _on_AreaAttack_body_exited(body: Node) -> void:
 		if _state == State.WALKING or _state == State.ATTACK:
 			if _state == State.DEAD:
 				enemy_destroy()
-			else: enemy_walk()
+			else: 
+				if _state != State.DEAD:
+					enemy_walk()

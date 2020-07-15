@@ -1,13 +1,15 @@
 extends Control
 
-
 onready var stage_lock = preload("res://src/UserInterface/Stage/LockedStage.tscn").instance()
 onready var stage_open = preload("res://src/UserInterface/Stage/OpenStage.tscn").instance()
 onready var stage_container = $StageBG/StageContainer
 onready var data = Database.loadData()
+
 var max_stage = 30
 
 func _ready() -> void:
+	if get_tree().paused == true:
+		get_tree().paused = false
 	addStage()
 	
 
@@ -19,9 +21,10 @@ func addStage() -> void:
 		var open_stage =  stage_open.duplicate()
 		
 		if i < stage_data.size():
-			open_stage.get_node("LabelStage").text = str(i+1)
-			stage_container.add_child(open_stage)
-			Autoload._stage = stage_data[i].stage_scene
+			if stage_data[i].stage_clear:
+				open_stage.get_node("LabelStage").text = str(i+1)
+				stage_container.add_child(open_stage)
+				Autoload._stage = stage_data[i].stage_scene
 		else: stage_container.add_child(lock_stage)
 
 

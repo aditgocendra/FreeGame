@@ -24,6 +24,7 @@ func _ready():
 	enemy_walk()
 	
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if $AnimatedSprite.animation == "Dead":
 		self.set_physics_process(false)
@@ -42,15 +43,17 @@ func _physics_process(delta):
 	
 	if _state == State.ATTACK:
 		hit_collision.disabled = false
-		if $AnimatedSprite.animation == "Attack":
+		if $AnimatedSprite.animation == "Attack" : 
 			yield($AnimatedSprite, "animation_finished")
 			hit_collision.disabled = true
-
-
-	$AnimatedSprite.scale.x = -1 if velocity.x > 0 else 1
+	else : $AnimatedSprite.scale.x = -1 if velocity.x > 0 else 1
+	
 	var animation = get_new_animation()
-
-	$AnimatedSprite.play(animation)
+	
+	if $AnimatedSprite.animation != animation and $TimerAnimation.is_stopped():
+		if $AnimatedSprite.animation == "Attack":
+			$TimerAnimation.start()
+		$AnimatedSprite.play(animation)
 
 	
 
@@ -102,7 +105,7 @@ func _on_AreaAttack_body_exited(body):
 
 func _on_AreaHit_body_entered(body):
 	if body is Player:
-		if _state != State.DEAD:
+		if _state != State.DEAD and _state == State.ATTACK:
 			body.die()
 	
 
