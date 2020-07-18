@@ -15,3 +15,7 @@ func _process(delta: float) -> void:
 func changeTrans(new_trans, node) -> void:
 	var new_color =  Color(1,1,1, new_trans)
 	node.set_modulate(new_color)
+	
+func changeScale(new_scale, node) -> void:
+	
+	node.scale = Vector2(new_scale, new_scale)

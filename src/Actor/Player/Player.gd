@@ -37,18 +37,21 @@ func _physics_process(delta: float) -> void:
 		direction = get_direction()
 	else : #Mobile UI
 		direction = control_ui.calculate_direction_UI()
-		if direction.y == -1 and is_on_floor():
+		if is_on_floor() and control_ui.jump_ui:
 			direction = control_ui.calculate_direction_UI()
-		else: direction = Vector2(direction.x, 1)
+			
+		else: direction = Vector2(direction.x, 0)
+	
 	
 	if $SpawnTimer.is_stopped():
 		$AnimationPlayer.stop()
 	
 	if Database.sfx == true:
 		playAudio()
+		control_ui.jump_ui = false
 	
 	
-	var is_jump_interrupted = Input.is_action_just_released("Jump") and velocity.y < 0.0
+	var is_jump_interrupted = Input.is_action_just_released("Jump") or !control_ui.jump_ui and velocity.y < 0.0
 	velocity = calculateMovement(velocity, direction, delta, is_jump_interrupted)
 	var is_on_platform = platform.is_colliding()
 	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE if direction.y == 0.0 else Vector2.ZERO
@@ -133,10 +136,9 @@ func die():
 			$AnimationPlayer.play("HitAnim")
 			$SpawnTimer.start()
 		
-	
-
+		
 func playAudio():
-	if Input.is_action_just_pressed("move_up") and is_on_floor():
+	if Input.is_action_just_pressed("move_up") or control_ui.jump_ui and is_on_floor():
 		$AudioJump.play()
 	if Input.is_action_just_pressed("shoot") or control_ui.attack_ui  and $AnimatedPlayer.animation != "Dead":
 		$AnimatedPlayer/Gun/AudioShoot.play()

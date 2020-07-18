@@ -2,6 +2,8 @@ extends Node
 
 
 var db_path = "res://src/Autoload/database.json"
+#var db_path = "user://database.json"
+
 var _file
 
 var json_data
@@ -17,42 +19,87 @@ var default_data = {
 	"game_controller":{
 	  "control":true
 	},
-	"control_ui":{
-	  "touch_left":{
-		"modulate":{
-		  "r":1, "g":1, "b":1, "a":1
-		},"position":{
-		  "x":38.47,"y":370.404
+	 "control_ui": {
+	  "touch_attack": {
+		"modulate": {
+		  "a": 1,
+		  "b": 1,
+		  "g": 1,
+		  "r": 1
+		},
+		"position": {
+		  "x": 699.572021,
+		  "y": 335.330994
+		},
+		"scale":{
+		  "x":1,
+		  "y":1
 		}
 	  },
-	  "touch_right":{
-		"modulate":{
-		  "r":1, "g":1, "b":1, "a":1
-		},"position":{
-		  "x":122.47,"y":370.404
+	  "touch_left": {
+		"modulate": {
+		  "a": 1,
+		  "b": 1,
+		  "g": 1,
+		  "r": 1
+		},
+		"position": {
+		  "x": 38.470001,
+		  "y": 370.403992
+		},
+		"scale":{
+		  "x":1,
+		  "y":1
 		}
 	  },
-	  "touch_up":{
-		"modulate":{
-		  "r":1, "g":1, "b":1, "a":1
-		},"position":{
-		  "x":80.47,"y":306.404
+	  "touch_right": {
+		"modulate": {
+		  "a": 1,
+		  "b": 1,
+		  "g": 1,
+		  "r": 1
+		},
+		"position": {
+		  "x": 122.470001,
+		  "y": 370.403992
+		},
+		"scale":{
+		  "x":1,
+		  "y":1
 		}
 	  },
-	  "touch_attack":{
-		"modulate":{
-		  "r":1, "g":1, "b":1, "a":1
-		},"position":{
-		  "x":699.572,"y":335.331
+	  "touch_setting": {
+		"modulate": {
+		  "a": 1,
+		  "b": 1,
+		  "g": 1,
+		  "r": 1
+		},
+		"position": {
+		  "x": 793.19397,
+		  "y": 14.954
+		},
+		"scale":{
+		  "x":1,
+		  "y":1
 		}
 	  },
-	  "touch_setting":{
-		"modulate":{
-		  "r":1, "g":1, "b":1, "a":1
-		},"position":{
-		  "x":793.194,"y":14.954
+	  "touch_up": {
+		"modulate": {
+		  "a": 1,
+		  "b": 1,
+		  "g": 1,
+		  "r": 1
+		},
+		"position": {
+		  "x": 80.470001,
+		  "y": 306.403992
+		},
+		"scale":{
+		  "x":1,
+		  "y":1
 		}
-	  },
+	  }
 	},
 	"setting_fps":{
 	  "FPSlabel": true

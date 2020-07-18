@@ -68,54 +68,55 @@ margin_left = -120.0
 margin_top = 8.59175
 margin_right = 120.0
 margin_bottom = 58.5918
+rect_min_size = Vector2( 0, 65 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxPos" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_right = 240.0
-margin_bottom = 23.0
+margin_bottom = 19.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelPos" type="Label" parent="Panel/VBoxContainer/HBoxPos"]
-margin_top = 4.0
+margin_top = 2.0
 margin_right = 77.0
-margin_bottom = 18.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 text = "Position :  "
 
 [node name="LabelX" type="Label" parent="Panel/VBoxContainer/HBoxPos"]
 margin_left = 81.0
-margin_top = 4.0
+margin_top = 2.0
 margin_right = 158.0
-margin_bottom = 18.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 text = "X"
 
 [node name="LabelY" type="Label" parent="Panel/VBoxContainer/HBoxPos"]
 margin_left = 162.0
-margin_top = 4.0
+margin_top = 2.0
 margin_right = 240.0
-margin_bottom = 18.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 text = "Y"
 
 [node name="HBoxEditTrans" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_top = 27.0
+margin_top = 23.0
 margin_right = 240.0
-margin_bottom = 50.0
+margin_bottom = 42.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelTrans" type="Label" parent="Panel/VBoxContainer/HBoxEditTrans"]
-margin_top = 4.0
+margin_top = 2.0
 margin_right = 100.0
-margin_bottom = 18.0
+margin_bottom = 16.0
 text = "Transparency :  "
 
 [node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/HBoxEditTrans"]
@@ -125,15 +126,40 @@ margin_bottom = 16.0
 size_flags_horizontal = 3
 value = 100.0
 
+[node name="HBoxEditScale" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 46.0
+margin_right = 240.0
+margin_bottom = 65.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelScale" type="Label" parent="Panel/VBoxContainer/HBoxEditScale"]
+margin_top = 2.0
+margin_right = 41.0
+margin_bottom = 16.0
+text = "Scale :"
+
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/HBoxEditScale"]
+margin_left = 45.0
+margin_right = 240.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 3.0
+step = 0.0
+value = 1.0
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -100.0
-margin_top = -40.6001
+margin_top = -35.8379
 margin_right = 100.0
-margin_bottom = -10.6001
+margin_bottom = -5.83789
 rect_min_size = Vector2( 0, 30 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -202,6 +228,7 @@ position = Vector2( 793.194, 14.9539 )
 normal = ExtResource( 1 )
 script = ExtResource( 12 )
 [connection signal="value_changed" from="Panel/VBoxContainer/HBoxEditTrans/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/HBoxEditScale/HSlider" to="." method="_on_Scale_value_changed"]
 [connection signal="gui_input" from="Panel/VBoxContainer2/HBoxBtn/ExitBtn" to="." method="_on_ExitBtn_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer2/HBoxBtn/ResetBtn" to="." method="_on_ResetBtn_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer2/HBoxBtn/SaveBtn" to="." method="_on_SaveBtn_gui_input"]

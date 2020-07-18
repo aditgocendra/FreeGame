@@ -32,3 +32,8 @@ func addStage() -> void:
 func _on_TouchScreenButton_pressed() -> void:
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/UserInterface/FirstMenu/FirstMenu.tscn")
+
+
+func _on_TouchTutorialButton_pressed():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://src/UserInterface/Tutorial/Tutorial.tscn")

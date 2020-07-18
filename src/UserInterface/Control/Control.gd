@@ -9,7 +9,7 @@ onready var touch_attack = $TouchAttack
 onready var touch_setting = $TouchSetting
 
 var attack_ui = false
-
+var jump_ui = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -64,7 +64,6 @@ func calculate_direction_UI() -> Vector2:
 	elif touch_right.is_pressed():
 		direction.x = 1
 	elif touch_up.is_pressed():
-		
 		direction.y = -1
 	
 	return direction
@@ -80,6 +79,7 @@ func _on_TouchRight_pressed() -> void:
 
 
 func _on_TouchUP_pressed() -> void:
+	jump_ui = true
 	touch_up.position.y += 2
 
 

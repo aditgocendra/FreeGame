@@ -404,10 +404,12 @@ smoothing_speed = 12.0
 [node name="LayerFPS" type="CanvasLayer" parent="."]
 
 [node name="FPSLabel" type="Label" parent="LayerFPS"]
-margin_left = 782.222
-margin_top = 97.0947
-margin_right = 822.222
-margin_bottom = 111.095
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -54.1421
+margin_top = 97.5807
+margin_right = -14.1421
+margin_bottom = 114.581
 custom_fonts/font = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false

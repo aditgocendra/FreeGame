@@ -61,7 +61,7 @@ func update_sound() -> void:
 	
 	Database.save_data(data)
 	Database.sfx = Database.checkSfx_OnOff(data)
-
+	Database.music = Database.checkMusic_OnOff(data)
 
 
 

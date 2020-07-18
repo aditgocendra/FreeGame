@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/tutorial/Tutorial1.png" type="Texture" id=1]
+[ext_resource path="res://src/UserInterface/Tutorial/Tutorial.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.4, 240 )
+
+[node name="Tutorial" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureTutorial" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchChangeButton" type="TouchScreenButton" parent="TextureTutorial"]
+scale = Vector2( 18.8, 1 )
+shape = SubResource( 1 )
+[connection signal="pressed" from="TextureTutorial/TouchChangeButton" to="." method="_on_TouchChangeButton_pressed"]

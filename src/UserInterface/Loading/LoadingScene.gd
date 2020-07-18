@@ -26,3 +26,4 @@ func setTextureLoading():
 func _on_TimerLoading_timeout():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(Autoload._stage)
+	
