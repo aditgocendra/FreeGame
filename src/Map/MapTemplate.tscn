@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/tileset/png/Tiles/BGTile (1).png" type="Texture" id=1]
 [ext_resource path="res://assets/tileset/png/Tiles/BGTile (2).png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=27]
 [ext_resource path="res://src/UserInterface/Pause/PauseOverlay.tscn" type="PackedScene" id=28]
 [ext_resource path="res://src/Actor/Enemy/WarriorSkeleton/WarriorSkeleton.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/Object/Spike/Spike.tscn" type="PackedScene" id=30]
 
 [sub_resource type="TileSet" id=1]
 0/name = "BGTile (1).png 0"
@@ -431,6 +432,13 @@ position = Vector2( 1257.95, 642.044 )
 
 [node name="Barel" parent="BarelGroup" instance=ExtResource( 22 )]
 position = Vector2( 486.582, -106.749 )
+
+[node name="SpikeGroup" type="Node2D" parent="."]
+position = Vector2( 0, 61.9087 )
+z_index = -1
+
+[node name="Spike" parent="SpikeGroup" instance=ExtResource( 30 )]
+position = Vector2( 2132.79, 581.189 )
 
 [node name="EnemyGroup" type="Node2D" parent="."]
 
