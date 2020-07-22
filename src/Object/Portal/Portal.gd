@@ -23,7 +23,8 @@ func _on_Portal_body_entered(body):
 		var texture = "res://assets/tileset/png/Objects/DoorOpen.png"
 		if $Sprite.texture.resource_path == texture:
 			get_tree().paused = true
-			win_stage.get_node("LabelTimes").text = str_elapsed
+			win_stage.get_node("VBoxContainer/LabelTimes").text = str_elapsed
+			win_stage.get_node("VBoxContainer/LabelScore").text = str(Autoload._score)
 			$WinLayer.add_child(win_stage)
 			newOpenStage()
 
