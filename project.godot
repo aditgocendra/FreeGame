@@ -121,6 +121,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_6="magic"
 2d_physics/layer_7="barel"
 2d_physics/layer_8="poison"
+2d_physics/layer_9="coin"
 
 [physics]
 

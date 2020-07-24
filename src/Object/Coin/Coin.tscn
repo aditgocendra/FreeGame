@@ -25,6 +25,8 @@ radius = 281.652
 
 [node name="Coin" type="Area2D"]
 scale = Vector2( 0.1, 0.1 )
+monitorable = false
+collision_layer = 256
 script = ExtResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

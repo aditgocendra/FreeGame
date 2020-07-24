@@ -39,7 +39,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 3, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 853.759, 140.001 ), Vector2( 342.5, 140.001 ) ]
@@ -101,25 +101,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelTimes" type="Label" parent="VBoxContainer"]
-margin_right = 157.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 161.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_right = 90.0
 margin_bottom = 24.0
 size_flags_vertical = 7
 custom_fonts/font = ExtResource( 2 )
-text = "Times : 00.00"
+text = "Times : "
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelScore" type="Label" parent="VBoxContainer"]
-margin_top = 28.0
-margin_right = 157.0
-margin_bottom = 52.0
+[node name="LabelTimes" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 94.0
+margin_right = 161.0
+margin_bottom = 24.0
 size_flags_vertical = 7
 custom_fonts/font = ExtResource( 2 )
-text = "Score"
+text = "00.00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_left = 24.0
+margin_top = 28.0
+margin_right = 136.0
+margin_bottom = 52.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 93.0
+margin_bottom = 24.0
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 2 )
+text = "Score : "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelScore" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 97.0
+margin_right = 112.0
+margin_bottom = 24.0
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 2 )
+text = "0"
 align = 1
 valign = 1
 __meta__ = {

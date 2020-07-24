@@ -7,3 +7,5 @@ func _on_ExplosionArea_body_entered(body: Node) -> void:
 		body.die()
 	elif body is MagicianEnemy:
 		body.enemy_destroy()
+	elif body is WarriorEnemy:
+		body.enemy_destroy()

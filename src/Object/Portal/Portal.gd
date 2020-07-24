@@ -18,13 +18,14 @@ func _process(delta):
 	var seconds = elapsed % 60
 	str_elapsed = "%02d : %02d" % [minutes, seconds]
 
+
 func _on_Portal_body_entered(body):
 	if body is Player:
 		var texture = "res://assets/tileset/png/Objects/DoorOpen.png"
 		if $Sprite.texture.resource_path == texture:
 			get_tree().paused = true
-			win_stage.get_node("VBoxContainer/LabelTimes").text = str_elapsed
-			win_stage.get_node("VBoxContainer/LabelScore").text = str(Autoload._score)
+			win_stage.get_node("VBoxContainer/HBoxContainer/LabelTimes").text = str_elapsed 
+			win_stage.get_node("VBoxContainer/HBoxContainer2/LabelScore").text = str(Autoload._score)
 			$WinLayer.add_child(win_stage)
 			newOpenStage()
 
