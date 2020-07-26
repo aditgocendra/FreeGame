@@ -138,8 +138,10 @@ func die():
 		
 		
 func playAudio():
-	if Input.is_action_just_pressed("move_up") or control_ui.jump_ui and is_on_floor():
-		$AudioJump.play()
+	
+	if Input.is_action_just_pressed("move_up") or control_ui.jump_ui:
+		if is_on_floor():
+			$AudioJump.play()
 	if Input.is_action_just_pressed("shoot") or control_ui.attack_ui  and $AnimatedPlayer.animation != "Dead":
 		$AnimatedPlayer/Gun/AudioShoot.play()
 

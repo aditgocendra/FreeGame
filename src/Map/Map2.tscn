@@ -635,6 +635,13 @@ scale = Vector2( 4.00188, 1.70887 )
 z_index = 3
 texture = ExtResource( 27 )
 
+[node name="WaterShader3" type="Sprite" parent="ShaderGroup"]
+material = SubResource( 12 )
+position = Vector2( 3840.91, 2231.69 )
+scale = Vector2( 119.94, 5.13765 )
+z_index = 3
+texture = ExtResource( 27 )
+
 [node name="SpikeGroup" type="Node2D" parent="."]
 z_index = -1
 

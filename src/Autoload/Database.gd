@@ -1,8 +1,8 @@
 extends Node
 
 
-var db_path = "res://src/Autoload/database.json"
-#var db_path = "user://database.json"
+#var db_path = "res://src/Autoload/database.json"
+var db_path = "user://database.json"
 
 var _file
 
@@ -114,6 +114,23 @@ var default_data = {
 		"vol": 0
 	  }
 	}
+  },
+  "loading": {
+	"001": {
+	  "texture": "res://assets/loading/banner-1.png"
+	},
+	"002": {
+	  "texture": "res://assets/loading/banner-2.png"
+	},
+	"003": {
+	  "texture": "res://assets/loading/banner-3.png"
+	},
+	"004": {
+	  "texture": "res://assets/loading/banner-4.png"
+	},
+	"005": {
+	  "texture": "res://assets/loading/banner-5.png"
+	}
   },  
   "stage": {
 	"0": {
@@ -125,6 +142,11 @@ var default_data = {
 	  "stage_clear": false,
 	  "stage_name": "Map1",
 	  "stage_scene": "res://src/Map/Map2.tscn"
+	},
+	"2": {
+	  "stage_clear": false,
+	  "stage_name": "Map2",
+	  "stage_scene": "res://src/Map/Map3.tscn"
 	}
   }
 }
